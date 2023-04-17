@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>properties</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <style>
+        .hello {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="application">
+        <hello divclass="hello"></hello>
+    </div>
+</body>
+<script>
+    const App = Vue.createApp({})
+    const component = {
+        data() {
+            return {
+                message: "hello template!",
+                count: 0
+            }
+        },
+        methods: {
+            add() {
+                this.count++
+            }
+        },
+        props: ["divclass"],
+        template: `<button @click="add">点击</button>
+        <div :class="divclass">{{ message }} : {{ count }}</div>`
+    }
+    App.component("hello", component)
+    App.mount("#application")
+</script>
+</html>

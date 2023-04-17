@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Computed</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+<body>
+    <div id="application">
+        <div>{{ type }}</div>
+        <button @click="add">Add</button>
+    </div>
+</body>
+
+<script>
+    const App = {
+        data(){
+            return {
+                count: 0
+            }
+        },
+        computed: {
+            type(){
+                return this.count + " : " + (this.count > 5 ? "大" : "小")
+            }
+        },
+        methods: {
+            add(){
+                this.count++
+            }
+        }
+    }
+    let instance = Vue.createApp(App).mount("#application")
+    console.log(instance.type)
+</script>
+
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>select</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+<body>
+    <div id="application">
+
+        <select v-model="select">
+            <option value="男">男</option>
+            <option value="女">女</option>
+        </select>
+        <p>{{select}}</p>
+
+        <select v-model="selectList" multiple>
+            <option value="计算机">计算机</option>
+            <option value="电子信息">电子信息</option>
+            <option value="汉语言文学">汉语言文学</option>
+            <option value="法学">法学</option>
+        </select>
+        <p>{{selectList}}</p>
+
+    </div>
+</body>
+<script>
+    const App = {
+        data() {
+            return {
+                select: "",
+                selectList: []
+            }
+        }
+    }
+    Vue.createApp(App).mount("#application")
+</script>
+</html>

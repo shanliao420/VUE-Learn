@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lazy_and_trim</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+<body>
+    <div id="application">
+
+        lazy: 懒加载，当输入框失去焦点后同步输入框数据到data
+        <br>
+        trim: 将绑定的文本数据首尾空格去掉，输入框和data的空格都去掉
+        <br>
+        <textarea v-model.lazy.trim="textarea"></textarea>
+        <p style="white-space: pre-line;">{{textarea}}</p>
+    </div>
+</body>
+<script>
+    const App = {
+        data() {
+            return {
+                textarea: ""
+            }
+        }
+    }
+    Vue.createApp(App).mount("#application")
+</script>
+</html>

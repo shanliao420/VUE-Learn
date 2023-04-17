@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lazy_and_trim</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <style>
+        .red {
+            color: red;
+        }
+        .green {
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <div id="application">
+        <div :class="{red: isRed, green: isGreen}">
+            <pre>
+如果你一路跟随本教程下来，你应该已经建立了一个拥有静态用户界面的功能性 Electron 程序。 从这里开始，你可以大概从两个大方向上进行开发：
+1. 增加渲染进程的网页应用代码复杂度
+2. 深化与操作系统和 Node.js 的集成
+            </pre>
+        </div>
+        <button @click="exchange">切换</button>
+    </div>
+</body>
+<script>
+    const App = {
+        data() {
+            return {
+                isRed: true,
+                isGreen: false
+            }
+        },
+        methods: {
+            exchange(){
+                this.isRed = !this.isRed
+                this.isGreen = !this.isGreen
+            }
+        }
+    }
+    Vue.createApp(App).mount("#application")
+</script>
+</html>

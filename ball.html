@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ball</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            margin: 0;
+            padding: 0;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: blanchedalmond;
+            display: inline;
+        }
+        .ball {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            left: 100px;
+            top: 100px;
+            background-color: red;
+            border-radius: 30px;
+            z-index: 100;
+        }
+        .block {
+            position: absolute;
+            width: 60px;
+            height: 120px;
+            left: 100px;
+            top: 100px;
+            background-color: red;
+            z-index: 100;
+        }
+    </style>
+</head>
+<body>
+    <div id="application">
+        <div class="container" @mousemove.stop="move">
+            <div class="block" :style="{left: blockOffsetX+'px', top: blockOffsetY+'px'}"></div>
+            <div class="ball" :style="{left: offsetX+'px', top: offsetY+'px'}"></div>
+        </div>
+    </div>
+</body>
+
+<script>
+    const App = {
+        data() {
+            return {
+                offsetX: 0,
+                offsetY: 0,
+                blockOffsetX: 0,
+                blockOffsetY: 0
+            }
+        },
+        methods: {
+            move(event){
+                // if(event.clientX + 30 > 800){
+                //     this.offsetX = 800 - 60
+                // }else if(event.clientX - 30 < 0){
+                //     this.offsetX = 0
+                // }else{
+                //     this.offsetX = event.clientX - 30
+                // }
+
+                // if(event.clientY + 30 > 800){
+                //     this.offsetY = 800 - 60
+                // }else if(event.clientY - 30 < 0){
+                //     this.offsetY = 0
+                // }else{
+                //     this.offsetY = event.clientY - 30
+                // }
+
+                    this.offsetX = event.pageX - 30
+                    this.offsetY = event.pageY - 30
+
+            },
+            change() {
+                if(this.blockOffsetX + 15 == 1000 || this.blockOffsetY + 15 == 1000){
+                    this.blockOffsetX = 0
+                    this.blockOffsetY = 0
+                }
+                this.blockOffsetY += 1
+                this.blockOffsetX += 1
+            },
+            check(){
+                if(Math.abs(this.blockOffsetX - this.offsetX) <= 50 && Math.abs(this.blockOffsetY - this.offsetY) <= 100){
+                    console.log("crush!!")
+                }
+            }
+        },
+        mounted(){
+            setInterval(this.change, 20)
+            setInterval(this.check, 20)
+
+        }
+        
+    }
+    Vue.createApp(App).mount("#application")
+</script>
+
+</html>

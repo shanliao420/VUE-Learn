@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>template</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+<body>
+    <div id="application">
+        <alert></alert>
+        <alert></alert>
+    </div>
+</body>
+<script>
+    const App = Vue.createApp({})
+    const component = {
+        data() {
+            return {
+                message: "Hello World!",
+                count: 0
+            }
+        },
+        methods: {
+            click(){
+               this.count++
+            }
+        },
+        template: `<div><button @click="click">按钮</button></div>
+                    <p>{{message}}&nbsp;:&nbsp;{{count}}</p>`
+    }
+    App.component("alert", component)
+    App.mount("#application")
+</script>
+</html>

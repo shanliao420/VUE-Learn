@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>radio</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+<body>
+    <div id="application">
+        <input type="radio" value="man" v-model="checked" />男
+        <input type="radio" value="woman" v-model="checked" />女
+        <p>{{checked}}</p>
+    </div>
+</body>
+<script>
+    const App = {
+        data() {
+            return {
+                checked: ""
+            }
+        }
+    }
+    Vue.createApp(App).mount("#application")
+</script>
+</html>

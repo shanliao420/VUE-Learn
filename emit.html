@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>properties</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+<body>
+    <div id="application">
+        <my-button title="Hello World!" @btnclick="appFunc"></my-button>
+        <p>{{message}}</p>
+    </div>
+</body>
+<script>
+    const App = Vue.createApp({
+        data() {
+            return {
+                message: ""
+            }
+        },
+        methods: {
+            appFunc(param){
+                if(this.message.length > 0){
+                    this.message = ""
+                }else{
+                    this.message = param
+                }
+            }
+        }
+    })
+    const component = {
+        props: ["title"],
+        template: `<div><button @click="$emit('btnclick', title)">{{title}}</button></div>`
+    }
+    App.component("my-button", component)
+    App.mount("#application")
+</script>
+</html>

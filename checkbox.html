@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>checkbox</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+<body>
+    <div id="application">
+       <input type="checkbox" value="羽毛球" v-model="checkList" />足球
+       <input type="checkbox" value="篮球" v-model="checkList" />篮球
+       <input type="checkbox" value="排球" v-model="checkList" />排球
+       <input type="checkbox" value="网球" v-model="checkList" />网球
+        <p>{{checkList}}</p>
+    </div>
+</body>
+<script>
+    const App = {
+        data() {
+            return {
+                checkList: []
+            }
+        }
+    }
+    Vue.createApp(App).mount("#application")
+</script>
+</html>
